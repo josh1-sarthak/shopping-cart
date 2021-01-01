@@ -9,11 +9,11 @@ const CardDetail = (props) => {
           <p> {props.currentCard.name} </p>
           <p> <strong> Rs. {props.currentCard.price} </strong> </p>
           <div>
-           <button onClick={props.decrement}><FaArrowDown/></button> 
+           <button style={{background: "#758E4F"}} onClick={props.decrement}><FaArrowDown/></button> 
            <input style={{width: "3em"}} type="number" min="1" value={props.quantity} onChange={props.enteredInput} /> 
-           <button onClick={props.increment}><FaArrowUp/></button>
+           <button style={{background: "#758E4F"}} onClick={props.increment}><FaArrowUp/></button>
           </div>
-          <button style={{width: "100%"}} onClick={props.addToCart}> Add to cart! <FaShoppingCart/> </button>
+          <button style={{width: "150px", cursor: "pointer", background: "#6A7152", color: "white", borderRadius: "4px"}} onClick={props.addToCart}> Add to cart! <FaShoppingCart/> </button>
           </div>
     );
 }

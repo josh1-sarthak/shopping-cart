@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import CardDetail from './components/CardDetail';
 import CartView from './components/CartView';
 import LandingCard from './components/LandingCard';
 
+const GlobalStyle = createGlobalStyle`
+   body {
+       background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url("https://images.unsplash.com/photo-1559551409-dadc959f76b8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1504&q=80");
+   }
+`; 
 
 const DivContainer = styled.div`
   display: grid;
@@ -25,13 +30,15 @@ const LeftSection = styled.div`
 `;
 
 const DivCard = styled.div`
-  border: 2px solid black;
+  border: 4px solid black;
   height: 220px;
-  width: 250px;
+  margin: 2px;
+  width: 230px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const RightSection = styled.div`
@@ -44,10 +51,13 @@ const RightSection = styled.div`
 
 const DivCardDetail = styled.div`
   border: 2px solid black;
+  padding: 5px;
 `;
 
 const DivCartView = styled.div`
   border: 2px solid black;
+  padding: 5px;
+  overflow: auto;
 `;
 
 
@@ -97,65 +107,66 @@ const App = () => {
     setOrders(netOrders => (netOrders.filter(item => item.order_name !== orderItem.order_name)));
   }
 
+  const jackets = [
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201107/RXb3/5fa59a1ef997dd8c838cbfd5/-1117Wx1400H-441102042-grey-MODEL.jpg",
+      jacket_name: "Team Spirit-Puffer Jacket",
+      jacket_cost: "Rs. 1899",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201208/Fz5V/5fce7b4faeb269d563319f6b/-1117Wx1400H-460776375-khaki-MODEL.jpg",
+      jacket_name: "Fort Collins-Bomber Jacket",
+      jacket_cost: "Rs. 2063",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/h8b/hb8/12037357142046/-1117Wx1400H-460259694-brown-MODEL.jpg",
+      jacket_name: "Indian Garage-Biker Jacket",
+      jacket_cost: "Rs. 2205",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201031/UXvA/5f9c609df997dd8c83800b27/-1117Wx1400H-441105682-olive-MODEL.jpg",
+      jacket_name: "Netplay-Bomber Jacket",
+      jacket_cost: "Rs. 2099",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201016/4Sh5/5f88974ff997dd8c8367a66b/-1117Wx1400H-460731673-blue-MODEL.jpg",
+      jacket_name: "Levis-Military Jacket",
+      jacket_cost: "Rs. 4799",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201121/PZh2/5fb80b94aeb269d56316e731/-1117Wx1400H-410272530-02a-MODEL.jpg",
+      jacket_name: "Superdry-Commuter Jacket",
+      jacket_cost: "Rs. 9999",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201202/STrk/5fc68ca1aeb269d56324facc/-1117Wx1400H-460793126-wine-MODEL.jpg",
+      jacket_name: "UCB-Bomber Jacket",
+      jacket_cost: "Rs. 3024",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201206/ojb9/5fcc55c2aeb269d5632dae10/-473Wx593H-461667014-yellow-MODEL.jpg",
+      jacket_name: "Okane-Bomber Jacket",
+      jacket_cost: "Rs. 1575",
+    },
+    {
+      img: "https://assets.ajio.com/medias/sys_master/root/20201031/qb40/5f9c62e8f997dd8c8380206b/-473Wx593H-420046044-vine-MODEL.jpg",
+      jacket_name: "John Players-Padded Jacket",
+      jacket_cost: "Rs. 1599",
+    }
+  ]
+
 
   return (
     <DivContainer>
+    <GlobalStyle/>
       <LeftSection>
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201107/RXb3/5fa59a1ef997dd8c838cbfd5/-1117Wx1400H-441102042-grey-MODEL.jpg" width="200px" height="180px" alt="puffer_jacket"/> 
-        Team Spirit-Puffer Jacket <br/> 
-        <strong> Rs. 1899 </strong> 
-        </DivCard>
-    
-        <DivCard onClick={handleClick}>
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201208/Fz5V/5fce7b4faeb269d563319f6b/-1117Wx1400H-460776375-khaki-MODEL.jpg" width="200px" height="180px" alt="bomber_jacket"/>
-        Fort Collins-Bomber Jacket <br/>
-        <strong> Rs. 2063 </strong>
-        </DivCard>
-    
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/h8b/hb8/12037357142046/-1117Wx1400H-460259694-brown-MODEL.jpg" width="200px" height="180px" alt="biker_jacket"/>
-        Indian Garage-Biker Jacket <br/>
-        <strong> Rs. 2205 </strong>
-        </DivCard>
-    
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201031/UXvA/5f9c609df997dd8c83800b27/-1117Wx1400H-441105682-olive-MODEL.jpg" width="200px" height="180px" alt="bomber_jacket"/> 
-        Netplay-Bomber Jacket <br/>
-        <strong> Rs. 2099 </strong>
-        </DivCard>
-
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201016/4Sh5/5f88974ff997dd8c8367a66b/-1117Wx1400H-460731673-blue-MODEL.jpg" width="200px" height="180px" alt="military_jacket"/> 
-        Levis-Military Jacket <br/>
-        <strong> Rs. 4799 </strong>
-        </DivCard>
-  
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201121/PZh2/5fb80b94aeb269d56316e731/-1117Wx1400H-410272530-02a-MODEL.jpg" width="200px" height="180px" alt="commuter_jacket"/> 
-        Superdry-Commuter Jacket <br/>
-        <strong> Rs. 9999 </strong>
-        </DivCard>
-
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201202/STrk/5fc68ca1aeb269d56324facc/-1117Wx1400H-460793126-wine-MODEL.jpg" width="200px" height="180px" alt="bomber_jacket"/> 
-        UCB-Bomber Jacket <br/>
-        <strong> Rs. 3024 </strong>
-        </DivCard>
-
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201206/ojb9/5fcc55c2aeb269d5632dae10/-473Wx593H-461667014-yellow-MODEL.jpg" width="200px" height="180px" alt="bomber_jacket"/>
-        Okane-Bomber Jacket <br/>
-        <strong> Rs. 1575 </strong>
-        </DivCard>
-      
-
-        <DivCard onClick={handleClick}> 
-        <img src="https://assets.ajio.com/medias/sys_master/root/20201031/qb40/5f9c62e8f997dd8c8380206b/-473Wx593H-420046044-vine-MODEL.jpg" width="200px" height="180px" alt="padded_jacket"/> 
-        John Players-Padded Jacket <br/>
-        <strong> Rs. 1599 </strong>
-        </DivCard>
-
+        {jackets.map((jacketItem) =>
+          <DivCard onClick={handleClick}>
+          <img src={jacketItem.img} width="200px" height="180px" alt={jacketItem.jacket_name} />
+          {jacketItem.jacket_name} <br/>
+          <strong> {jacketItem.jacket_cost} </strong>
+          </DivCard>
+        )}
       </LeftSection>
       <RightSection> {/* some props are kept with same name to avoid confusion*/}
         <DivCardDetail>
